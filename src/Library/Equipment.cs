@@ -7,9 +7,9 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Recipies
+namespace Recipes
 {
-    public class Equipment
+    public class Equipment : IJsonConvertible
     {
         [JsonConstructor]
         public Equipment(string description, double hourlyCost)
@@ -26,5 +26,16 @@ namespace Recipies
         public string Description { get; set; }
 
         public double HourlyCost { get; set; }
+
+        public string ConvertToJson()
+        {
+            return JsonSerializer.Serialize(this);
+        }
+        public void LoadFromJson(string json)
+        {
+            Equipment deserializedEquipment = JsonSerializer.Deserialize<Equipment>(json);
+            this.Description = deserializedEquipment.Description;
+            this.HourlyCost = deserializedEquipment.HourlyCost;
+        }
     }
 }

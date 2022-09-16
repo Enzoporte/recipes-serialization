@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using Recipies;
+using Recipes;
 using System;
 using System.Globalization;
 

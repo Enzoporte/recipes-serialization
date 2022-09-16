@@ -8,7 +8,7 @@ using System;
 using System.Collections;
 using System.Linq;
 
-namespace Recipies
+namespace Recipes
 {
     public class Program
     {

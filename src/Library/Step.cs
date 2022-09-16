@@ -7,9 +7,9 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Recipies
+namespace Recipes
 {
-    public class Step
+    public class Step : IJsonConvertible
     {
         [JsonConstructor]
         public Step(Product input, double quantity, Equipment equipment, int time)
@@ -32,5 +32,20 @@ namespace Recipies
         public int Time { get; set; }
 
         public Equipment Equipment { get; set; }
+
+        public string ConvertToJson()
+        {
+            return JsonSerializer.Serialize(this);
+        }
+
+        public void LoadFromJson(string json)
+        {
+            Step deserializedStep = JsonSerializer.Deserialize<Step>(json);
+            this.Quantity = deserializedStep.Quantity;
+            this.Equipment = deserializedStep.Equipment;
+            this.Input = deserializedStep.Input;
+            this.Time = deserializedStep.Time;
+        }
+
     }
 }

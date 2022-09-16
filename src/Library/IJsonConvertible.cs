@@ -1,4 +1,4 @@
-namespace Recipies
+namespace Recipes
 {
     /// <summary>
     /// Define el tipo que tienen los objetos que pueder ser serializados en y deserializados desde texto en formato
